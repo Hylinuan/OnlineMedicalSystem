@@ -59,7 +59,7 @@
                     <ul class="u-nav u-spacing-20 u-unstyled u-nav-1">
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
-                                href="../index.html" style="padding: 10px;">Home</a>
+                                href="../index.php" style="padding: 10px;">Home</a>
                         </li>
                         <li class="u-nav-item"><a
                                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
@@ -84,7 +84,7 @@
                         <div class="u-inner-container-layout u-sidenav-overflow">
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-spacing-23 u-unstyled u-nav-2">
-                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html"
+                                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.php"
                                         style="padding-top: 22px; padding-bottom: 22px;">Home</a>
                                 </li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Appointment.php"
@@ -129,7 +129,7 @@
                     <ul class="u-nav u-spacing-10 u-unstyled u-nav-3">
                         <li class="u-nav-item"><a
                                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
-                                href="../index.html" style="padding: 26px 34px;">Home</a>
+                                href="../index.php" style="padding: 26px 34px;">Home</a>
                         </li>
                         <li class="u-nav-item"><a
                                 class="u-border-no-bottom u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"
@@ -147,7 +147,7 @@
                             <div class="u-menu-close"></div>
                             <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-4">
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link"
-                                        href="../index.html">Home</a>
+                                        href="../index.php">Home</a>
                                 </li>
                                 <li class="u-nav-item"><a class="u-button-style u-nav-link"
                                         href="./Appointment.php">Appointment</a>

@@ -1,53 +1,16 @@
 <?php
-if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
-  header("Location: ../index.php");
-} else {
-  if (isset($_POST["submit"])) {
-
-    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-    // Create connection
-    $mysqli = new mysqli("localhost", "root", "", "oms", 3306);
-
-    // Check connection
-    if ($mysqli->connect_errno) {
-      echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-      exit();
-    }
-
-    $firstName = $_POST['firstName'];
-    $middleName = $_POST['middleName'];
-    $lastName = $_POST['lastName'];
-    $birth = $_POST['birthdate'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $userName = $_POST['username'];
-    $passwd = $_POST['password'];
-    $confpasswd = $_POST['confirm-password'];
-
-    //check if phone number exists
-    $existcheck = $mysqli->query("SELECT `phone` FROM (SELECT DISTINCT `phone` FROM Paccount UNION SELECT DISTINCT `phone` FROM Daccount) AS users WHERE `phone` = '{$phone}';");
-
-    // checking if account exists
-    if ($existcheck->num_rows < 1) {
-
-      //checking if username is taken
-      $usercheck = $mysqli->query("SELECT `userName` FROM (SELECT DISTINCT `userName` FROM Paccount UNION SELECT DISTINCT `userName` FROM Daccount) AS users WHERE `userName` = '{$userName}';");
-
-      if ($usercheck->num_rows < 1) {
-        // checking if passwords match
-        if (strcmp($passwd, $confpasswd) == 0) {
-
-          $sql = "INSERT INTO Paccount (`PID`, `firstName`, `middleName`, `lastName`, `birthD`, `phone`, `email`)
-                VALUES ('', '{$firstName}', '{$middleName}', '{$lastName}', '{$birth}',  '{$phone}', '{$email}');";
-          $result = $mysqli->query($sql);
-        }
-      }
-    }
-    header("Location: ./User/Log-in.php");
-
-    $conn->close();
-  }
+if (isset($_GET['logout'])) {
+  setcookie('username', null, null);
+  setcookie('password', null, null);
+  unset($_COOKIE['username']);
+  unset($_COOKIE['password']);
 }
+if (!isset($_COOKIE['username']) || !isset($_COOKIE['password'])) {
+  echo "<script>alert('Please log in to make appointment!')</script>";
+  header("Location: ./Log-in.php");
+} else {
+}
+
 ?>
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
@@ -55,9 +18,9 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <meta name="keywords" content="Register">
-  <meta name="description" content="Register an account">
-  <title>Register</title>
+  <meta name="keywords" content="UserInfo">
+  <meta name="description" content="View or change user information">
+  <title>User Information</title>
   <link rel="stylesheet" href="../css/nicepage.css" media="screen">
   <link rel="stylesheet" href="../css/Register.css" media="screen">
   <script class="u-script" type="text/javascript" src="../js/jquery.js" defer=""></script>
@@ -69,6 +32,12 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
   <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/">
 </head>
+<script>
+  mobiscroll.datepicker('#mobi-picker', {
+    controls: ['date'],
+    touchUi: true
+  });
+</script>
 
 <body class="u-body u-xl-mode" data-lang="en">
   <header class="u-header" id="sec-b883" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
@@ -98,6 +67,8 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
             </li>
             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="./Log-in.php" style="padding: 10px;">Log in</a>
             </li>
+            <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="Register.php" style="padding: 10px;">Register</a>
+            </li>
           </ul>
         </div>
         <div class="u-custom-menu u-nav-container-collapse">
@@ -112,6 +83,8 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Schedule.php" style="padding-top: 22px; padding-bottom: 22px;">Schedule</a>
                 </li>
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Log-in.php" style="padding-top: 22px; padding-bottom: 22px;">Log in</a>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Register.php" style="padding-top: 22px; padding-bottom: 22px;">Register</a>
                 </li>
               </ul>
             </div>
@@ -163,7 +136,8 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
           </div>
           <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
         </div>
-      </nav><span class="u-file-icon u-hidden-md u-hidden-sm u-hidden-xs u-hover-feature u-icon u-icon-1" data-href="./Log-in.php" title="Log-in"><img id="headImg" src="../images/login.png" alt=""></span>
+      </nav>
+      <span class="u-file-icon u-hidden-md u-hidden-sm u-hidden-xs u-hover-feature u-icon u-icon-1" data-href="./Userinfo.php?logout=True" title="Log out"><img src="../images/logout.png" alt="Log out"></span>
     </div>
   </header>
   <!-- end of Header(logo, menu) -->
@@ -185,7 +159,7 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
           </div>
           <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-4">
             <label for="date-0d5d" class="u-label u-label-4">Date</label>
-            <input type="date" placeholder="MM-DD-YYYY" id="mobi-picker" name="birthdate" class="u-input u-input-rectangle" required="required" date-format="mm/dd/yyyy">
+            <input type="text" readonly="readonly" placeholder="MM/DD/YYYY" id="mobi-picker" mbsc-input name="date" class="u-input u-input-rectangle" required="required" data-date-format="mm/dd/yyyy">
           </div>
           <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-5">
             <label for="phone-60b5" class="u-label u-label-5">Phone</label>
@@ -208,7 +182,7 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
             <input type="password" placeholder="Re-enter your password" id="text-92a4" name="confirm-password" class="u-input u-input-rectangle" required="required">
           </div>
           <div class="u-align-center u-form-group u-form-submit">
-            <input type="submit" name="submit" value="Submit" class="u-btn u-btn-submit u-button-style u-btn-1"></input>
+            <input type="submit" name="submit" value="Save changes" class="u-btn u-btn-submit u-button-style u-btn-1"></input>
             <!-- <button type="submit" value="submit" class="u-form-control-hidden"> -->
           </div>
         </form>
@@ -233,5 +207,79 @@ if (isset($_COOKIE['username']) || isset($_COOKIE['password'])) {
   </section>
 
 </body>
+<?php
+if (isset($_POST["submit"])) {
+
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+  // Create connection
+  $mysqli = new mysqli("localhost", "root", "hsuanmacair", "oms", 3306);
+
+  // Check connection
+  if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: " . $mysqli->connect_error;
+    exit();
+  }
+
+  $firstName = $_POST['firstName'];
+  $middleName = $_POST['middleName'];
+  $lastName = $_POST['lastName'];
+  $phone = $_POST['phone'];
+  $email = $_POST['email'];
+  $userName = $_POST['username'];
+  $passwd = $_POST['password'];
+  $confpasswd = $_POST['confirm-password'];
+
+  $success_id = 0;
+  // 0 = default
+  // 1 = sucess, redirect to Login
+  // 2 = already signed up
+  // 3 = username is taken
+  // 4 = password doesn't match
+  // 5 = something went wrong
+
+
+  $existcheck = $mysqli->query("SELECT `phone` FROM (SELECT DISTINCT `phone` FROM Paccount UNION SELECT DISTINCT `phone` FROM Daccount) AS users WHERE `phone` = '{$phone}';");
+  // $check = $existcheck -> num_rows;
+  echo "<script>alert('{$middleName}.{$lastName}')</script>";
+  // checking if account exists
+  if ($existcheck->num_rows < 1) {
+
+    //checking if username is taken
+    $usercheck = $mysqli->query("SELECT `userName` FROM (SELECT DISTINCT `userName` FROM Paccount UNION SELECT DISTINCT `userName` FROM Daccount) AS users WHERE `userName` = '{$userName}';");
+    // $check = $usercheck -> num_rows;
+    // echo "<script>alert('{$check}')</script>";
+    if ($usercheck->num_rows < 1) {
+      // checking if passwords match
+      if (strcmp($passwd, $confpasswd) == 0) {
+        echo "<script>alert(check correct)</script>";
+
+        $sql = "INSERT INTO Paccount (`PID`, `firstName`, `middleName`, `lastName`, `phone`, `email`)
+                  VALUES ('', '{$firstName}', '{$middleName}', '{$lastName}', '{$phone}', '{$email}');";
+        $result = $mysqli->query($sql);
+        // checking to see if sign up is complete
+        if ($result) {
+          $success_id = 1; // successful signup
+        } else {
+          $success_id = 5; // something went wrong
+          echo "<script>alert('Oops! Something went wrong, please check again or contact us!')</script>";
+        }
+      } else {
+        $success_id = 4;
+        echo "<script>alert('Two password doesn't match!')</script>";
+      }
+    } else {
+      $success_id = 3;
+      echo "<script>alert('Phone number already exists!')</script>";
+    }
+  } else {
+    $success_id = 2;
+    echo "<script>alert('Username already exists!')</script>";
+  }
+  // echo "<script>alert('{$success_id}')</script>";
+  header("Location: ../User/Register.php?success_id=" . $success_id . "");
+
+  $conn->close();
+}
+?>
 
 </html>
