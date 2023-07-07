@@ -1,0 +1,106 @@
+{
+    "sourceFile": "test/AppointmentTest.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 22,
+            "patches": [
+                {
+                    "date": 1683675042134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683675129210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,3 @@\n <?php\n-function first($int, $string){ //function parameters, two variables.\n-    return $string;  //returns the second argument passed into the function\n-}\n+require __DIR__ . '/File1.php';\n+echo first(1, \"omg lol\"); //returns omg lol;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683675144272,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,2 @@\n <?php\n-require __DIR__ . '/File1.php';\n-echo first(1, \"omg lol\"); //returns omg lol;\n\\ No newline at end of file\n+require __DIR__ . '../User/Appointment.php';\n"
+                },
+                {
+                    "date": 1683675230716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,6 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n+\n+function testConnection(){\n+    \n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683675245076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testConnection(){\n-    \n-}\n\\ No newline at end of file\n+function testConnection()\n+{\n+    ConnectDB_Appointment\n+}\n"
+                },
+                {
+                    "date": 1683675346065,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testConnection()\n+function testConnection() // test DB connection \n {\n-    ConnectDB_Appointment\n+    ConnectDB_Appointment();\n }\n"
+                },
+                {
+                    "date": 1683930896886,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testConnection() // test DB connection \n+function testPara_1() // test DB connection \n {\n     ConnectDB_Appointment();\n }\n"
+                },
+                {
+                    "date": 1683930908290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testPara_1() // test DB connection \n+function testCompleted() // test DB connection \n {\n     ConnectDB_Appointment();\n }\n"
+                },
+                {
+                    "date": 1683930994942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testCompleted() // test DB connection \n+function testCompleted() // test correct para\n {\n     ConnectDB_Appointment();\n }\n"
+                },
+                {
+                    "date": 1683931044556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n-    ConnectDB_Appointment();\n+    ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"\");\n }\n"
+                },
+                {
+                    "date": 1683931051057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n-    ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"\");\n+    ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n }\n"
+                },
+                {
+                    "date": 1683931265544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n-    ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n+    assertTrue(ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\"));\n }\n"
+                },
+                {
+                    "date": 1683931305325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n-    assertTrue(ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\"));\n+    $this->assertTrue(ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\"));\n }\n"
+                },
+                {
+                    "date": 1683931310957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,7 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n+    $assertvalue = false;\n     $this->assertTrue(ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\"));\n }\n"
+                },
+                {
+                    "date": 1683931332631,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n require __DIR__ . '../User/Appointment.php';\n \n function testCompleted() // test correct para\n {\n-    $assertvalue = false;\n-    $this->assertTrue(ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\"));\n+    $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n+    $this->assertTrue();\n }\n"
+                },
+                {
+                    "date": 1683931339236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    $this->assertTrue();\n+    $this->assertTrue($assertvalue);\n }\n"
+                },
+                {
+                    "date": 1683931358122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    $this->assertTrue($assertvalue);\n+    $this->assertTrue($assertvalue, \"assert value is true or not\");\n }\n"
+                },
+                {
+                    "date": 1683931381822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    $this->assertTrue($assertvalue, \"assert value is true or not\");\n+    $assertvalue->assertTrue();\n }\n"
+                },
+                {
+                    "date": 1683931425480,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    $assertvalue->assertTrue();\n+    assertSame($assertvalue, \"assert value is true or not\");\n }\n"
+                },
+                {
+                    "date": 1683931437713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    assertSame($assertvalue, \"assert value is true or not\");\n+    assertSame(True, $assertvalue,);\n }\n"
+                },
+                {
+                    "date": 1683931445842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,6 +3,6 @@\n \n function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n-    assertSame(True, $assertvalue,);\n+    $this->assertSame(True, $assertvalue,);\n }\n"
+                },
+                {
+                    "date": 1683931467427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-function testCompleted() // test correct para\n+public function testCompleted() // test correct para\n {\n     $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n     $this->assertSame(True, $assertvalue);\n }\n"
+                },
+                {
+                    "date": 1683931486043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n require __DIR__ . '../User/Appointment.php';\n \n-class GeeksPhpunitTestCase extends TestCase\n+class GeeksPhpunitTestCase\n {\n     public function testCompleted() // test correct para\n     {\n         $assertvalue = ConnectDB_Appointment(\"2023-04-03\", \"Johnson\", \"joshua0000\");\n"
+                }
+            ],
+            "date": 1683675042134,
+            "name": "Commit-0",
+            "content": "<?php\nfunction first($int, $string){ //function parameters, two variables.\n    return $string;  //returns the second argument passed into the function\n}\n"
+        }
+    ]
+}

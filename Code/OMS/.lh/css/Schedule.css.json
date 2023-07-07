@@ -1,0 +1,38 @@
+{
+    "sourceFile": "css/Schedule.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1683910133358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683910142287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -116,7 +116,7 @@\n   transition-duration: 0.4s;\n }\n \n .button:hover {\n-  background-color: #4CAF50; /* Green */\n+  background-color: #af4c4c; /* Green */\n   color: white;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683910156924,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -111,12 +111,12 @@\n     width: auto;\n   }\n }\n \n-.button {\n+button {\n   transition-duration: 0.4s;\n }\n \n-.button:hover {\n+button:hover {\n   background-color: #af4c4c; /* Green */\n   color: white;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683910173881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -111,12 +111,12 @@\n     width: auto;\n   }\n }\n \n-button {\n+.cancelButton {\n   transition-duration: 0.4s;\n }\n \n-button:hover {\n+.cancelButton:hover {\n   background-color: #af4c4c; /* Green */\n   color: white;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683910227468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -111,12 +111,12 @@\n     width: auto;\n   }\n }\n \n-.cancelButton {\n+.column5.cancelButton {\n   transition-duration: 0.4s;\n }\n \n-.cancelButton:hover {\n+.column5.cancelButton:hover {\n   background-color: #af4c4c; /* Green */\n   color: white;\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1683910291397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -110,13 +110,4 @@\n     margin-left: initial;\n     width: auto;\n   }\n }\n-\n-.column5.cancelButton {\n-  transition-duration: 0.4s;\n-}\n-\n-.column5.cancelButton:hover {\n-  background-color: #af4c4c; /* Green */\n-  color: white;\n-}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1683910133358,
+            "name": "Commit-0",
+            "content": ".u-section-1 .u-sheet-1 {\n  min-height: 1132px;\n}\n\n.u-section-1 .u-text-1 {\n  font-size: 3rem;\n  width: 861px;\n  font-weight: 700;\n  margin: 61px auto 0;\n}\n\n.u-section-1 .u-icon-1 {\n  width: 66px;\n  height: 66px;\n  margin: -76px auto 0 41px;\n  padding: 0;\n}\n\n.u-section-1 .u-icon-2 {\n  width: 66px;\n  height: 66px;\n  margin: -66px 41px 0 auto;\n  padding: 0;\n}\n\n.u-section-1 .u-widget-1 {\n  min-height: 880px;\n  height: auto;\n  width: 933px;\n  margin: 51px auto 60px;\n}\n\n@media (max-width: 1199px) {\n  .u-section-1 .u-text-1 {\n    width: 721px;\n    margin-top: 51px;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: -66px;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-top: -70px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    margin-top: 57px;\n  }\n}\n\n@media (max-width: 991px) {\n  .u-section-1 .u-text-1 {\n    width: 528px;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-left: 19px;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-right: 19px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    width: 720px;\n  }\n}\n\n@media (max-width: 767px) {\n  .u-section-1 .u-text-1 {\n    width: 371px;\n    margin-top: 0;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: -91px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    width: 540px;\n  }\n}\n\n@media (max-width: 575px) {\n  .u-section-1 .u-sheet-1 {\n    min-height: 1267px;\n  }\n\n  .u-section-1 .u-text-1 {\n    width: auto;\n    margin-top: 19px;\n    margin-left: 0;\n    margin-right: 0;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: 19px;\n    margin-left: 0;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-top: -75px;\n    margin-right: 10px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    margin-top: 30px;\n    margin-right: initial;\n    margin-left: initial;\n    width: auto;\n  }\n}\n\n.button {\n  transition-duration: 0.4s;\n}\n\n.button:hover {\n  background-color: #4CAF50; /* Green */\n  color: white;\n}"
+        }
+    ]
+}

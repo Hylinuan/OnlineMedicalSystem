@@ -1,0 +1,30 @@
+{
+    "sourceFile": "test/test.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1681350341818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1681350386921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,54 @@\n+<script>\n+    (function() {\n+  var mondayRef = 1;\n+  var sundayRef = 7;\n+  \n+  var prev = document.getElementById('prev');\n+  var next = document.getElementById('next');\n+  var dateRange = document.getElementById('date-range');\n+  var dateViews = document.getElementsByClassName('date');\n+  var daysOfMonth = document.getElementById('days-of-month');\n+  var calendarPopover = document.getElementById('calendar-popover');\n+  \n+ \n+  function adjustCalendar(monRef, sunRef) {\n+    var monday = moment().day(monRef);\n+    var sunday = moment().day(sunRef);\n+    \n+    if (monRef > 0) {\n+      for (var date = monRef; date <= sunRef; date++) {\n+        dateViews[(date - 1) % 7].innerHTML = moment().day(date).format('M[/]D');\n+      }\n+    } else {\n+      for (var date = -monRef; date >= -sunRef; date --) {\n+        dateViews[-(monRef + date)].innerHTML = moment().day(-date).format('M[/]D');\n+      }\n+    }\n+  \n+    if (monday.format('YYYY') !== sunday.format('YYYY')) {\n+      dateRange.innerHTML = `${monday.format('MMMM Do, YYYY')} - ${sunday.format('MMMM Do, YYYY')}`;\n+    } else {\n+      dateRange.innerHTML = `${monday.format('MMMM Do')} - ${sunday.format('MMMM Do, YYYY')}`;\n+    }\n+  }\n+  \n+  // Init\n+  adjustCalendar(mondayRef, sundayRef);\n+  \n+  next.onclick = function() {\n+    mondayRef += 7;\n+    sundayRef += 7;\n+    adjustCalendar(mondayRef, sundayRef);\n+  }\n+  \n+  prev.onclick = function() {\n+    mondayRef -= 7;\n+    sundayRef -= 7;\n+    adjustCalendar(mondayRef, sundayRef);\n+  }\n+})();\n+</script>\n <div class=\"container\">\n     <div class=\"calendar\">\n       <div class=\"nav\">\n         <i id=\"prev\" class=\"fas fa-arrow-left arrow\" tabindex=\"0\"></i>\n"
+                },
+                {
+                    "date": 1681350399799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,31 @@\n <script>\n+    .container {\n+    display: flex;\n+    align-items: center;\n+    flex-direction: column;\n+}\n+.calendar > .nav {\n+    align-items: center;\n+}\n+.calendar > div {\n+    display: flex;\n+    justify-content: space-evenly;\n+}\n+.calendar > div > div {\n+    padding: 12px;\n+}\n+.calendar > .header > div, .calendar > .body > div {\n+    flex: 1 0 120px;\n+    border-right: 1px solid #e6e6e6;\n+}\n+.fas:focus {\n+    outline: none;\n+    opacity: 1;\n+}\n+\n+</script>\n+<script>\n     (function() {\n   var mondayRef = 1;\n   var sundayRef = 7;\n   \n"
+                },
+                {
+                    "date": 1681350425161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-<script>\n+<style>\n     .container {\n     display: flex;\n     align-items: center;\n     flex-direction: column;\n@@ -22,9 +22,9 @@\n     outline: none;\n     opacity: 1;\n }\n \n-</script>\n+    </style>\n <script>\n     (function() {\n   var mondayRef = 1;\n   var sundayRef = 7;\n"
+                }
+            ],
+            "date": 1681350341818,
+            "name": "Commit-0",
+            "content": "<div class=\"container\">\n    <div class=\"calendar\">\n      <div class=\"nav\">\n        <i id=\"prev\" class=\"fas fa-arrow-left arrow\" tabindex=\"0\"></i>\n        <div class=\"calendar-icon-container\">\n          <h1 id=\"date-range\"></h1>\n          <div>\n            <div id=\"calendar-popover\" class=\"calendar-popover hidden\">\n            </div>\n          </div>\n        </div>\n        <i id=\"next\" class=\"fas fa-arrow-right arrow\" tabindex=\"0\"></i>\n      </div>\n      <div id=\"header\" class=\"header\">\n        <div>\n          <div>Monday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Tuesday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Wednesday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Thursday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Friday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Saturday</div>\n          <div class=\"date\"></div>\n        </div>\n        <div>\n          <div>Sunday</div>\n          <div class=\"date\"></div>\n        </div>\n      </div>\n      <div class=\"body\">\n        <div>\n            <li>text</li>\n        </div>\n        <div>\n            <li>text</li>\n        </div>\n        <div>\n            <li>text</li>\n        </div>\n        <div>\n            <li>....</li>\n        </div>\n        <div>\n            <li>text</li>\n        </div>\n        <div>\n            <li>text</li>\n        </div>\n        <div>\n            <li>text</li>\n        </div>\n      </div>\n    </div>\n  </div>"
+        }
+    ]
+}

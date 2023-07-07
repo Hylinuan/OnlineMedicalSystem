@@ -1,0 +1,174 @@
+{
+    "sourceFile": "css/Appointment.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 39,
+            "patches": [
+                {
+                    "date": 1679787419306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1679787561534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n }\n \n .day {\n   width: 120px;\n-  height: 230px;\n+  height: 100%;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n   margin-right:7px;\n"
+                },
+                {
+                    "date": 1679787621964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,12 @@\n .days {\n   width: 1000px;\n+  min-height: 880px;\n }\n \n .day {\n   width: 120px;\n-  height: 100%;\n+  height: 230px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n   margin-right:7px;\n"
+                },
+                {
+                    "date": 1679787685673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n }\n \n .day {\n   width: 120px;\n-  height: 230px;\n+  min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n   margin-right:7px;\n@@ -17,9 +17,9 @@\n   margin-bottom: 15px;\n }\n \n .timeslot {\n-  background-color: #00c09d;\n+  background-color: #93bfcb;\n   width: auto;\n   height: 20px;\n   color: white;\n   padding:7px;\n"
+                },
+                {
+                    "date": 1679787696495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n .timeslot {\n   background-color: #93bfcb;\n   width: auto;\n-  height: 20px;\n+  height: auto;\n   color: white;\n   padding:7px;\n   margin-top: 5px;\n   font-size: 14px;\n"
+                },
+                {
+                    "date": 1679787714261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n   text-align:center;\n }\n \n .timeslot:hover { \n-  background-color: #2CA893;\n+  background-color: #ee8496;\n   cursor: pointer;\n }\n \n .u-section-1 .u-sheet-1 {\n"
+                },
+                {
+                    "date": 1679787733323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: 120px;\n+  width: auto;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679787743431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: auto;\n+  width: 200px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679787888161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: 200px;\n+  width: 150px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679787894508,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: 150px;\n+  width: 130px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679787905138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,8 @@\n .day {\n   width: 130px;\n   min-height: 880px;\n   background-color: #efeff6;\n-  padding:10px;\n   float:left;\n   margin-right:7px;\n   margin-bottom:5px;\n }\n"
+                },
+                {
+                    "date": 1679787914512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n .day {\n   width: 130px;\n   min-height: 880px;\n   background-color: #efeff6;\n+  padding:10px;\n   float:left;\n   margin-right:7px;\n   margin-bottom:5px;\n }\n@@ -20,9 +21,8 @@\n   background-color: #93bfcb;\n   width: auto;\n   height: auto;\n   color: white;\n-  padding:7px;\n   margin-top: 5px;\n   font-size: 14px;\n   border-radius: 3px;\n   vertical-align: center;\n"
+                },
+                {
+                    "date": 1679787927277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: 130px;\n+  width: 10px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n@@ -21,8 +21,9 @@\n   background-color: #93bfcb;\n   width: auto;\n   height: auto;\n   color: white;\n+  padding:7px;\n   margin-top: 5px;\n   font-size: 14px;\n   border-radius: 3px;\n   vertical-align: center;\n"
+                },
+                {
+                    "date": 1679787943389,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n   min-height: 880px;\n }\n \n .day {\n-  width: 10px;\n+  width: 130px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n-  float:left;\n+  float:center;\n   margin-right:7px;\n   margin-bottom:5px;\n }\n \n"
+                },
+                {
+                    "date": 1679787949058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   width: 130px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n-  float:center;\n+  float:left;\n   margin-right:7px;\n   margin-bottom:5px;\n }\n \n"
+                },
+                {
+                    "date": 1679787976154,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n-  margin-right:7px;\n   margin-bottom:5px;\n }\n \n .datelabel {\n"
+                },
+                {
+                    "date": 1679787981509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n+  margin-right:7px;\n   margin-bottom:5px;\n }\n \n .datelabel {\n"
+                },
+                {
+                    "date": 1679787990100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .days {\n-  width: 1000px;\n+  width: 1231px;\n   min-height: 880px;\n }\n \n .day {\n"
+                },
+                {
+                    "date": 1679788024579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-.days {\n+.week {\n   width: 1231px;\n   min-height: 880px;\n }\n \n"
+                },
+                {
+                    "date": 1679788038164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n .week {\n   width: 1231px;\n   min-height: 880px;\n+  float: center;\n }\n \n .day {\n   width: 130px;\n"
+                },
+                {
+                    "date": 1679788048609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .week {\n-  width: 1231px;\n+  width: 1000px;\n   min-height: 880px;\n   float: center;\n }\n \n"
+                },
+                {
+                    "date": 1679788070542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n .week {\n-  width: 1000px;\n+  width: 1112px;\n   min-height: 880px;\n   float: center;\n }\n \n"
+                },
+                {
+                    "date": 1679788108639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,8 +37,9 @@\n }\n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n+  align: center;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679788117491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n }\n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n-  align: center;\n+  text-align: center;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679788122782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,8 @@\n }\n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n-  text-align: center;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679788152854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n .week {\n   width: 1112px;\n   min-height: 880px;\n-  float: center;\n+  vertical-align: center;\n }\n \n .day {\n   width: 130px;\n"
+                },
+                {
+                    "date": 1679788185418,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n .week {\n   width: 1112px;\n   min-height: 880px;\n-  vertical-align: center;\n+  margin: auto;\n }\n \n .day {\n   width: 130px;\n"
+                },
+                {
+                    "date": 1679788448840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n .week {\n   width: 1112px;\n   min-height: 880px;\n-  margin: auto;\n }\n \n .day {\n   width: 130px;\n"
+                },
+                {
+                    "date": 1679788463761,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n .week {\n   width: 1112px;\n   min-height: 880px;\n+  margin: auto;\n }\n \n .day {\n   width: 130px;\n"
+                },
+                {
+                    "date": 1679788511120,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   margin: auto;\n }\n \n .day {\n-  width: 130px;\n+  width: 140px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679788517370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   margin: auto;\n }\n \n .day {\n-  width: 140px;\n+  width: 142px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679788524589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   margin: auto;\n }\n \n .day {\n-  width: 142px;\n+  width: 143px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n"
+                },
+                {
+                    "date": 1679840054572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   margin: auto;\n }\n \n .day {\n-  width: 143px;\n+  width: 145px;\n   min-height: 880px;\n   background-color: #efeff6;\n   padding:10px;\n   float:left;\n@@ -34,8 +34,11 @@\n .timeslot:hover { \n   background-color: #ee8496;\n   cursor: pointer;\n }\n+body{\n+  background: #c3e4ed;\n+}\n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n }\n"
+                },
+                {
+                    "date": 1679840068718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n   background-color: #ee8496;\n   cursor: pointer;\n }\n body{\n-  background: #c3e4ed;\n+  background-color: #c3e4ed;\n }\n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n"
+                },
+                {
+                    "date": 1679840094081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,14 +34,13 @@\n .timeslot:hover { \n   background-color: #ee8496;\n   cursor: pointer;\n }\n-body{\n-  background-color: #c3e4ed;\n-}\n \n+\n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n+  background-color:#c3e4ed;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679840995630,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n-  background-color:#c3e4ed;\n+  background-color:#bfdde5;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679841012523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n   margin-bottom: 15px;\n }\n \n .timeslot {\n-  background-color: #93bfcb;\n+  background-color: #bfdde5;\n   width: auto;\n   height: auto;\n   color: white;\n   padding:7px;\n"
+                },
+                {
+                    "date": 1679841019344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n   margin-bottom: 15px;\n }\n \n .timeslot {\n-  background-color: #bfdde5;\n+  background-color: #93bfcb;\n   width: auto;\n   height: auto;\n   color: white;\n   padding:7px;\n"
+                },
+                {
+                    "date": 1679841905586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n-  background-color:#bfdde5;\n+  background-color:#b1cfd7;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                },
+                {
+                    "date": 1679842022125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \n \n .u-section-1 .u-sheet-1 {\n   min-height: 1231px;\n-  background-color:#b1cfd7;\n+  background-color:#d0e4ea;\n }\n \n .u-section-1 .u-tabs-1 {\n   min-height: 1112px;\n"
+                }
+            ],
+            "date": 1679787419306,
+            "name": "Commit-0",
+            "content": ".days {\n  width: 1000px;\n}\n\n.day {\n  width: 120px;\n  height: 230px;\n  background-color: #efeff6;\n  padding:10px;\n  float:left;\n  margin-right:7px;\n  margin-bottom:5px;\n}\n\n.datelabel {\n  margin-bottom: 15px;\n}\n\n.timeslot {\n  background-color: #00c09d;\n  width: auto;\n  height: 20px;\n  color: white;\n  padding:7px;\n  margin-top: 5px;\n  font-size: 14px;\n  border-radius: 3px;\n  vertical-align: center;\n  text-align:center;\n}\n\n.timeslot:hover { \n  background-color: #2CA893;\n  cursor: pointer;\n}\n\n.u-section-1 .u-sheet-1 {\n  min-height: 1231px;\n}\n\n.u-section-1 .u-tabs-1 {\n  min-height: 1112px;\n  margin-top: 20px;\n  margin-bottom: 60px;\n  height: auto;\n}\n\n.u-section-1 .u-tab-link-1 {\n  font-size: 2.25rem;\n  font-weight: 700;\n}\n\n.u-section-1 .u-tab-link-2 {\n  font-size: 2.25rem;\n  font-weight: 700;\n}\n\n.u-section-1 .u-tab-link-3 {\n  font-size: 2.25rem;\n  font-weight: 700;\n}\n\n.u-section-1 .u-tab-link-4 {\n  font-size: 2.25rem;\n  font-weight: 700;\n}\n\n.u-section-1 .u-container-layout-1 {\n  padding: 0 30px 30px;\n}\n\n.u-section-1 .u-group-elements-1 {\n  width: 1077px;\n  min-height: 964px;\n  height: auto;\n  margin: 32px auto 0;\n}\n\n.u-section-1 .u-text-1 {\n  font-size: 3rem;\n  font-weight: 700;\n  width: 861px;\n  margin: 0 110px 0 106px;\n}\n\n.u-section-1 .u-icon-1 {\n  width: 66px;\n  height: 66px;\n  margin: -76px 1004px 0 8px;\n  padding: 0;\n}\n\n.u-section-1 .u-icon-2 {\n  width: 66px;\n  height: 66px;\n  margin: -66px 12px 0 auto;\n  padding: 0;\n}\n\n.u-section-1 .u-widget-1 {\n  min-height: 880px;\n  height: auto;\n  width: 1077px;\n  margin: 18px auto 0;\n}\n\n.u-section-1 .u-container-layout-2 {\n  padding: 0 14px;\n}\n\n.u-section-1 .u-group-elements-2 {\n  width: 1058px;\n  min-height: 964px;\n  height: auto;\n  margin: 32px auto 0;\n}\n\n.u-section-1 .u-text-2 {\n  font-size: 3rem;\n  font-weight: 700;\n  width: 861px;\n  margin: 0 99px 0 98px;\n}\n\n.u-section-1 .u-icon-3 {\n  width: 66px;\n  height: 66px;\n  margin: -76px 992px 0 0;\n  padding: 0;\n}\n\n.u-section-1 .u-icon-4 {\n  width: 66px;\n  height: 66px;\n  margin: -66px 0 0 auto;\n  padding: 0;\n}\n\n.u-section-1 .u-widget-2 {\n  min-height: 880px;\n  height: auto;\n  margin: 18px auto 0 61px;\n}\n\n.u-section-1 .u-tab-pane-3 {\n  margin-top: 0;\n  margin-bottom: 0;\n}\n\n.u-section-1 .u-container-layout-3 {\n  padding: 0 14px;\n}\n\n.u-section-1 .u-group-elements-3 {\n  width: 1058px;\n  min-height: 964px;\n  height: auto;\n  margin: 32px auto 0;\n}\n\n.u-section-1 .u-text-3 {\n  font-size: 3rem;\n  font-weight: 700;\n  width: 861px;\n  margin: 0 99px 0 98px;\n}\n\n.u-section-1 .u-icon-5 {\n  width: 66px;\n  height: 66px;\n  margin: -76px 992px 0 0;\n  padding: 0;\n}\n\n.u-section-1 .u-icon-6 {\n  width: 66px;\n  height: 66px;\n  margin: -66px 0 0 auto;\n  padding: 0;\n}\n\n.u-section-1 .u-widget-3 {\n  min-height: 880px;\n  height: auto;\n  margin: 18px auto 0 61px;\n}\n\n.u-section-1 .u-tab-pane-4 {\n  margin-top: 0;\n  margin-bottom: 0;\n}\n\n.u-section-1 .u-container-layout-4 {\n  padding: 0 14px;\n}\n\n.u-section-1 .u-group-elements-4 {\n  width: 1058px;\n  min-height: 964px;\n  height: auto;\n  margin: 32px auto 0;\n}\n\n.u-section-1 .u-text-4 {\n  font-size: 3rem;\n  font-weight: 700;\n  width: 861px;\n  margin: 0 99px 0 98px;\n}\n\n.u-section-1 .u-icon-7 {\n  width: 66px;\n  height: 66px;\n  margin: -76px 992px 0 0;\n  padding: 0;\n}\n\n.u-section-1 .u-icon-8 {\n  width: 66px;\n  height: 66px;\n  margin: -66px 0 0 auto;\n  padding: 0;\n}\n\n.u-section-1 .u-widget-4 {\n  min-height: 880px;\n  height: auto;\n  margin: 18px auto 0 61px;\n}\n\n@media (max-width: 1199px) {\n  .u-section-1 .u-group-elements-1 {\n    width: 880px;\n    min-height: 985px;\n    margin-top: 21px;\n  }\n\n  .u-section-1 .u-text-1 {\n    width: 699px;\n    margin-left: auto;\n    margin-right: auto;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: -69px;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-top: -70px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    min-height: 895px;\n    margin-top: 22px;\n    margin-right: initial;\n    margin-left: initial;\n    width: auto;\n  }\n\n  .u-section-1 .u-group-elements-2 {\n    width: 913px;\n  }\n\n  .u-section-1 .u-group-elements-3 {\n    width: 913px;\n  }\n\n  .u-section-1 .u-group-elements-4 {\n    width: 913px;\n  }\n\n  .u-section-1 .u-text-4 {\n    width: auto;\n    margin-right: 17px;\n    margin-left: 35px;\n  }\n}\n\n@media (max-width: 991px) {\n  .u-section-1 .u-group-elements-1 {\n    width: 660px;\n  }\n\n  .u-section-1 .u-group-elements-2 {\n    width: 693px;\n  }\n\n  .u-section-1 .u-group-elements-3 {\n    width: 693px;\n  }\n\n  .u-section-1 .u-group-elements-4 {\n    width: 693px;\n  }\n}\n\n@media (max-width: 767px) {\n  .u-section-1 .u-tab-link-1 {\n    font-size: 1.875rem;\n  }\n\n  .u-section-1 .u-tab-link-2 {\n    font-size: 1.875rem;\n  }\n\n  .u-section-1 .u-tab-link-3 {\n    font-size: 1.875rem;\n  }\n\n  .u-section-1 .u-tab-link-4 {\n    font-size: 1.875rem;\n  }\n\n  .u-section-1 .u-container-layout-1 {\n    padding-left: 10px;\n    padding-right: 10px;\n  }\n\n  .u-section-1 .u-group-elements-1 {\n    width: 523px;\n    min-height: 1028px;\n    margin-top: -12px;\n  }\n\n  .u-section-1 .u-text-1 {\n    width: auto;\n    margin-right: 76px;\n    margin-left: 50px;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: -93px;\n    margin-right: auto;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-top: -59px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    min-height: 888px;\n    margin-top: 8px;\n    width: auto;\n    margin-right: initial;\n    margin-left: initial;\n  }\n\n  .u-section-1 .u-container-layout-2 {\n    padding-left: 10px;\n    padding-right: 10px;\n  }\n\n  .u-section-1 .u-group-elements-2 {\n    width: 520px;\n  }\n\n  .u-section-1 .u-container-layout-3 {\n    padding-left: 10px;\n    padding-right: 10px;\n  }\n\n  .u-section-1 .u-group-elements-3 {\n    width: 520px;\n  }\n\n  .u-section-1 .u-container-layout-4 {\n    padding-left: 10px;\n    padding-right: 10px;\n  }\n\n  .u-section-1 .u-group-elements-4 {\n    min-height: 989px;\n    margin-top: 0;\n    margin-right: initial;\n    margin-left: initial;\n    width: auto;\n  }\n\n  .u-section-1 .u-text-4 {\n    margin-right: 62px;\n    margin-left: 47px;\n  }\n\n  .u-section-1 .u-icon-7 {\n    margin-top: -102px;\n    margin-right: auto;\n  }\n\n  .u-section-1 .u-icon-8 {\n    margin-top: -74px;\n  }\n\n  .u-section-1 .u-widget-4 {\n    min-height: 852px;\n    width: 460px;\n    margin-top: 30px;\n    margin-left: auto;\n  }\n}\n\n@media (max-width: 575px) {\n  .u-section-1 .u-tab-link-1 {\n    font-size: 1.5rem;\n  }\n\n  .u-section-1 .u-tab-link-2 {\n    font-size: 1.5rem;\n  }\n\n  .u-section-1 .u-tab-link-3 {\n    font-size: 1.5rem;\n  }\n\n  .u-section-1 .u-tab-link-4 {\n    font-size: 1.5rem;\n  }\n\n  .u-section-1 .u-group-elements-1 {\n    margin-top: -3px;\n    min-height: 1045px;\n    margin-right: initial;\n    margin-left: initial;\n    width: auto;\n  }\n\n  .u-section-1 .u-text-1 {\n    font-size: 2.25rem;\n    margin-left: 0;\n    margin-right: 0;\n  }\n\n  .u-section-1 .u-icon-1 {\n    margin-top: -46px;\n  }\n\n  .u-section-1 .u-icon-2 {\n    margin-top: -69px;\n  }\n\n  .u-section-1 .u-widget-1 {\n    min-height: 903px;\n    margin-top: 11px;\n    width: auto;\n    margin-right: initial;\n    margin-left: initial;\n  }\n\n  .u-section-1 .u-group-elements-2 {\n    width: 320px;\n  }\n\n  .u-section-1 .u-group-elements-3 {\n    width: 320px;\n  }\n}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "test/test.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1681350362903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1681350362903,
+            "name": "Commit-0",
+            "content": ".container {\n    display: flex;\n    align-items: center;\n    flex-direction: column;\n}\n.calendar > .nav {\n    align-items: center;\n}\n.calendar > div {\n    display: flex;\n    justify-content: space-evenly;\n}\n.calendar > div > div {\n    padding: 12px;\n}\n.calendar > .header > div, .calendar > .body > div {\n    flex: 1 0 120px;\n    border-right: 1px solid #e6e6e6;\n}\n.fas:focus {\n    outline: none;\n    opacity: 1;\n}\n"
+        }
+    ]
+}

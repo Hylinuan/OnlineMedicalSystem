@@ -1,0 +1,82 @@
+{
+    "sourceFile": "User/test.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1680397256048,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1680397274270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,5 +43,16 @@\n     } catch (Exception $e) {\n       echo 'Caught exception: ',  $e->getMessage(), \"\\n\";\n     }\n   }\n-?>\n\\ No newline at end of file\n+?>\n+<html>\n+<body>\n+\n+<form action=\"#\" method=\"post\">\n+Name: <input type=\"text\" name=\"name\"><br>\n+E-mail: <input type=\"text\" name=\"email\"><br>\n+<input type=\"submit\">\n+</form>\n+\n+</body>\n+</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680397284368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,9 +49,9 @@\n <body>\n \n <form action=\"#\" method=\"post\">\n Name: <input type=\"text\" name=\"name\"><br>\n-E-mail: <input type=\"text\" name=\"email\"><br>\n+E-mail: <input type=\"text\" name=\"passwd\"><br>\n <input type=\"submit\">\n </form>\n \n </body>\n"
+                },
+                {
+                    "date": 1680397291655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,10 +48,10 @@\n <html>\n <body>\n \n <form action=\"#\" method=\"post\">\n-Name: <input type=\"text\" name=\"name\"><br>\n-E-mail: <input type=\"text\" name=\"passwd\"><br>\n+Name: <input type=\"text\" name=\"username\"><br>\n+E-mail: <input type=\"text\" name=\"password\"><br>\n <input type=\"submit\">\n </form>\n \n </body>\n"
+                },
+                {
+                    "date": 1680397331223,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+\n+<html>\n <?php\n   if(isset($_POST[\"submit\"])) {\n     try{\n       echo \"<script>alert('loading')</script>\";\n@@ -44,9 +46,8 @@\n       echo 'Caught exception: ',  $e->getMessage(), \"\\n\";\n     }\n   }\n ?>\n-<html>\n <body>\n \n <form action=\"#\" method=\"post\">\n Name: <input type=\"text\" name=\"username\"><br>\n"
+                },
+                {
+                    "date": 1680397390764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n \n <html>\n <?php\n+echo \"{isset($_POST[\"submit\"])}\";\n   if(isset($_POST[\"submit\"])) {\n     try{\n       echo \"<script>alert('loading')</script>\";\n       mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n"
+                },
+                {
+                    "date": 1680397395970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n \n <html>\n <?php\n-echo \"{isset($_POST[\"submit\"])}\";\n+echo \"{isset($_POST['submit'])}\";\n   if(isset($_POST[\"submit\"])) {\n     try{\n       echo \"<script>alert('loading')</script>\";\n       mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n"
+                },
+                {
+                    "date": 1680397556666,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,53 +1,8 @@\n \n <html>\n <?php\n-echo \"{isset($_POST['submit'])}\";\n-  if(isset($_POST[\"submit\"])) {\n-    try{\n-      echo \"<script>alert('loading')</script>\";\n-      mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n-      // Create connection\n-      $mysqli = new mysqli(\"localhost\",\"root\",\"\",\"oms\", 3306);\n-\n-      // Check connection\n-      if ($mysqli -> connect_errno) {\n-        echo \"Failed to connect to MySQL: \" . $mysqli -> connect_error;\n-        exit();\n-      };\n-\n-      // User information\n-      $userName = $_POST['username'];\n-      $passwd = $_POST['password'];\n-      \n-      \n-      //checking if username is taken\n-      $result = $mysqli->query(\"\n-      SELECT `firstName`, `lastName` FROM `Paccount`\n-      WHERE `username` = '{$userName}' AND `password`= '{$passwd}';\n-      SELECT `firstName`, `lastName` FROM `Daccount` \n-      WHERE `username` = '{$userName}'  AND `password` ='{$passwd}';\");\n-      \n-      if ($result -> num_rows > 0){// if the user is registered\n-        $row = mysqli_fetch_assoc($result);\n-        if($_POST[\"remember_me\"]=='1' || $_POST[\"remember_me\"]=='on')\n-        {\n-        $hour = time() + 3600 * 24 * 30;\n-        setcookie('username', $userName, $hour);\n-            setcookie('password', $passwd, $hour);\n-        }\n-        echo \"<script>alert('Welcome back!'.{$row['firstName']})</script>\";\n-        header(\"Location: ../index.html\");\n-      }\n-      else{ //if the user is NOT registerd\n-        \n-        echo \"<script>alert('The log-in information doesn't valid, please check again!')</script>\";\n-      };\n-      $conn->close();\n-    } catch (Exception $e) {\n-      echo 'Caught exception: ',  $e->getMessage(), \"\\n\";\n-    }\n-  }\n+  echo $_POST[\"name\"];\n ?>\n <body>\n \n <form action=\"#\" method=\"post\">\n"
+                },
+                {
+                    "date": 1680397576585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   echo $_POST[\"name\"];\n ?>\n <body>\n \n-<form action=\"#\" method=\"post\">\n+<form action=\"test.php\" method=\"post\">\n Name: <input type=\"text\" name=\"username\"><br>\n E-mail: <input type=\"text\" name=\"password\"><br>\n <input type=\"submit\">\n </form>\n"
+                },
+                {
+                    "date": 1680397606586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n \n <html>\n <?php\n-  echo $_POST[\"name\"];\n+  echo $_POST[\"username\"];\n ?>\n <body>\n \n <form action=\"test.php\" method=\"post\">\n"
+                },
+                {
+                    "date": 1680397632476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n \n <html>\n <?php\n-  echo $_POST[\"username\"];\n+  echo $_POST[\"submit\"];\n ?>\n <body>\n \n <form action=\"test.php\" method=\"post\">\n"
+                },
+                {
+                    "date": 1680397649693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n \n <html>\n <?php\n-  echo $_POST[\"submit\"];\n+  echo isset($_POST[\"submit\"]);\n ?>\n <body>\n \n <form action=\"test.php\" method=\"post\">\n"
+                },
+                {
+                    "date": 1680397854304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n \n <html>\n <?php\n-  echo isset($_POST[\"submit\"]);\n+  if(isset($_POST(\"submit\"))){\n+\n+  }\n ?>\n <body>\n \n <form action=\"test.php\" method=\"post\">\n"
+                },
+                {
+                    "date": 1680397861640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n \n <form action=\"test.php\" method=\"post\">\n Name: <input type=\"text\" name=\"username\"><br>\n E-mail: <input type=\"text\" name=\"password\"><br>\n-<input type=\"submit\">\n+<input type=\"submit\" name=\"submit\">\n </form>\n \n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680397909016,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,17 @@\n \n <html>\n <?php\n-  if(isset($_POST(\"submit\"))){\n+  if(isset($_POST[\"submit\"])) {\n \n   }\n ?>\n <body>\n \n <form action=\"test.php\" method=\"post\">\n Name: <input type=\"text\" name=\"username\"><br>\n E-mail: <input type=\"text\" name=\"password\"><br>\n-<input type=\"submit\" name=\"submit\">\n+<input type=\"submit\" name=\"submit\" value=\"login\">\n </form>\n \n </body>\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1680397918056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n \n <html>\n <?php\n   if(isset($_POST[\"submit\"])) {\n-\n+    echo \"here\";\n   }\n ?>\n <body>\n \n"
+                },
+                {
+                    "date": 1680470000018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-\n <html>\n <?php\n   if(isset($_POST[\"submit\"])) {\n     echo \"here\";\n"
+                }
+            ],
+            "date": 1680397256048,
+            "name": "Commit-0",
+            "content": "<?php\n  if(isset($_POST[\"submit\"])) {\n    try{\n      echo \"<script>alert('loading')</script>\";\n      mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n      // Create connection\n      $mysqli = new mysqli(\"localhost\",\"root\",\"\",\"oms\", 3306);\n\n      // Check connection\n      if ($mysqli -> connect_errno) {\n        echo \"Failed to connect to MySQL: \" . $mysqli -> connect_error;\n        exit();\n      };\n\n      // User information\n      $userName = $_POST['username'];\n      $passwd = $_POST['password'];\n      \n      \n      //checking if username is taken\n      $result = $mysqli->query(\"\n      SELECT `firstName`, `lastName` FROM `Paccount`\n      WHERE `username` = '{$userName}' AND `password`= '{$passwd}';\n      SELECT `firstName`, `lastName` FROM `Daccount` \n      WHERE `username` = '{$userName}'  AND `password` ='{$passwd}';\");\n      \n      if ($result -> num_rows > 0){// if the user is registered\n        $row = mysqli_fetch_assoc($result);\n        if($_POST[\"remember_me\"]=='1' || $_POST[\"remember_me\"]=='on')\n        {\n        $hour = time() + 3600 * 24 * 30;\n        setcookie('username', $userName, $hour);\n            setcookie('password', $passwd, $hour);\n        }\n        echo \"<script>alert('Welcome back!'.{$row['firstName']})</script>\";\n        header(\"Location: ../index.html\");\n      }\n      else{ //if the user is NOT registerd\n        \n        echo \"<script>alert('The log-in information doesn't valid, please check again!')</script>\";\n      };\n      $conn->close();\n    } catch (Exception $e) {\n      echo 'Caught exception: ',  $e->getMessage(), \"\\n\";\n    }\n  }\n?>"
+        }
+    ]
+}

@@ -1,0 +1,226 @@
+{
+    "sourceFile": "User/test/LoginTest.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 52,
+            "patches": [
+                {
+                    "date": 1684089193885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1684089202769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n-class LoginTest\n\\ No newline at end of file\n+class LoginTest extends TestCase{\n+\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1684089215284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,4 @@\n-class LoginTest extends TestCase{\n-\n-}\n\\ No newline at end of file\n+<?php\n+class LoginTest extends TestCase\n+{\n+}\n"
+                },
+                {
+                    "date": 1684089222271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,7 @@\n <?php\n+\n+use PHPUnit\\Framework\\TestCase;\n+\n class LoginTest extends TestCase\n {\n }\n"
+                },
+                {
+                    "date": 1684089232954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,5 +3,57 @@\n use PHPUnit\\Framework\\TestCase;\n \n class LoginTest extends TestCase\n {\n+    function ConnectDB_Login($userName, $passwd)\n+    {\n+        $validLogin = False;\n+        try {\n+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n+            // Create connection\n+            $mysqli = new mysqli(\"localhost\", \"root\", \"\", \"oms\", 3306);\n+\n+            // Check connection\n+            if ($mysqli->connect_errno) {\n+                echo \"Failed to connect to MySQL: \" . $mysqli->connect_error;\n+                exit();\n+            };\n+\n+            $sql = \"\n+  SELECT `firstName`, `lastName` FROM `Paccount`\n+  WHERE `username` = '{$userName}' AND `password`= '{$passwd}';\";\n+\n+            $mysqli->multi_query($sql);\n+\n+            do {\n+                if ($result = $mysqli->store_result()) {\n+                    $arr = $result->fetch_all(MYSQLI_ASSOC);\n+                    $result->free();\n+                }\n+\n+                foreach ($arr as $key => $val) {\n+                    if ($val['firstName'] != null) {\n+                        $fn = $val['firstName'];\n+                    }\n+                }\n+            } while ($mysqli->next_result());\n+            echo \"<script>alert('Welcome back! {$fn}')</script>\";\n+            if ($fn != null) {\n+                if ($_POST[\"remember_me\"] == '1' || $_POST[\"remember_me\"] == 'on') {\n+                    $hour = time() + 3600 * 24 * 30;\n+                    setcookie('username', $userName, $hour);\n+                    setcookie('password', $passwd, $hour);\n+                } else {\n+                    $hour = time() + 3600 * 1;\n+                    setcookie('username', $userName, $hour);\n+                    setcookie('password', $passwd, $hour);\n+                }\n+                $validLogin = True;\n+                return $validLogin;\n+            }\n+        } catch (Exception $e) {\n+            $mysqli->close();\n+            echo '<script>alert(Caught exception: ', $e->getMessage(), \")\";\n+        }\n+        header(\"Location: ../index.php\");\n+    }\n }\n"
+                },
+                {
+                    "date": 1684089251604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,17 +37,17 @@\n                 }\n             } while ($mysqli->next_result());\n             echo \"<script>alert('Welcome back! {$fn}')</script>\";\n             if ($fn != null) {\n-                if ($_POST[\"remember_me\"] == '1' || $_POST[\"remember_me\"] == 'on') {\n-                    $hour = time() + 3600 * 24 * 30;\n-                    setcookie('username', $userName, $hour);\n-                    setcookie('password', $passwd, $hour);\n-                } else {\n-                    $hour = time() + 3600 * 1;\n-                    setcookie('username', $userName, $hour);\n-                    setcookie('password', $passwd, $hour);\n-                }\n+                // if ($_POST[\"remember_me\"] == '1' || $_POST[\"remember_me\"] == 'on') {\n+                //     $hour = time() + 3600 * 24 * 30;\n+                //     setcookie('username', $userName, $hour);\n+                //     setcookie('password', $passwd, $hour);\n+                // } else {\n+                //     $hour = time() + 3600 * 1;\n+                //     setcookie('username', $userName, $hour);\n+                //     setcookie('password', $passwd, $hour);\n+                // }\n                 $validLogin = True;\n                 return $validLogin;\n             }\n         } catch (Exception $e) {\n"
+                },
+                {
+                    "date": 1684089278495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n             $sql = \"\n   SELECT `firstName`, `lastName` FROM `Paccount`\n   WHERE `username` = '{$userName}' AND `password`= '{$passwd}';\";\n \n-            $mysqli->multi_query($sql);\n+            // $mysqli->multi_query($sql);\n \n             do {\n                 if ($result = $mysqli->store_result()) {\n                     $arr = $result->fetch_all(MYSQLI_ASSOC);\n"
+                },
+                {
+                    "date": 1684089286385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n             $sql = \"\n   SELECT `firstName`, `lastName` FROM `Paccount`\n   WHERE `username` = '{$userName}' AND `password`= '{$passwd}';\";\n \n-            // $mysqli->multi_query($sql);\n+            $mysqli->multi_query($sql);\n \n             do {\n                 if ($result = $mysqli->store_result()) {\n                     $arr = $result->fetch_all(MYSQLI_ASSOC);\n"
+                },
+                {
+                    "date": 1684089345787,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,7 +53,7 @@\n         } catch (Exception $e) {\n             $mysqli->close();\n             echo '<script>alert(Caught exception: ', $e->getMessage(), \")\";\n         }\n-        header(\"Location: ../index.php\");\n+        // header(\"Location: ../index.php\");\n     }\n }\n"
+                },
+                {
+                    "date": 1684089359766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,5 +55,9 @@\n             echo '<script>alert(Caught exception: ', $e->getMessage(), \")\";\n         }\n         // header(\"Location: ../index.php\");\n     }\n+\n+    function TestSuccess()\n+    {\n+    }\n }\n"
+                },
+                {
+                    "date": 1684089553113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,6 +58,7 @@\n     }\n \n     function TestSuccess()\n     {\n+        self::\n     }\n }\n"
+                },
+                {
+                    "date": 1684089576253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,7 +58,7 @@\n     }\n \n     function TestSuccess()\n     {\n-        self::\n+        self::assertEquals();\n     }\n }\n"
+                },
+                {
+                    "date": 1684089581780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,7 +58,7 @@\n     }\n \n     function TestSuccess()\n     {\n-        self::assertEquals();\n+        self::assertEquals(True, self::);\n     }\n }\n"
+                },
+                {
+                    "date": 1684089606332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,7 +58,7 @@\n     }\n \n     function TestSuccess()\n     {\n-        self::assertEquals(True, self::);\n+        self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684089612331,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,7 +58,7 @@\n     }\n \n     function TestSuccess()\n     {\n-        self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\"));\n+        self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684089623694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n         }\n         // header(\"Location: ../index.php\");\n     }\n \n-    function TestSuccess()\n+    function TestSuccess() // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684089633299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,5 +60,8 @@\n     function TestSuccess() // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n+    function TestFailure_1()\n+    {\n+    }\n }\n"
+                },
+                {
+                    "date": 1684089652902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,7 +61,8 @@\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function TestFailure_1()\n-    {\n+    {  \n+        self::assertEquals(False, self::ConnectDB_Login())\n     }\n }\n"
+                },
+                {
+                    "date": 1684089671468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n     function TestSuccess() // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n-    function TestFailure_1()\n+    function TestFailure_1() //invalid parameter\n     {  \n         self::assertEquals(False, self::ConnectDB_Login())\n     }\n }\n"
+                },
+                {
+                    "date": 1684089688301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,7 +62,7 @@\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function TestFailure_1() //invalid parameter\n     {  \n-        self::assertEquals(False, self::ConnectDB_Login())\n+        self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"))\n     }\n }\n"
+                },
+                {
+                    "date": 1684089712717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,8 @@\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function TestFailure_1() //invalid parameter\n-    {  \n-        self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"))\n+    {\n+        self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684089774853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,5 +64,8 @@\n     function TestFailure_1() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n+    function TestFailure_2()\n+    {\n+    }\n }\n"
+                },
+                {
+                    "date": 1684089860823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,8 +64,9 @@\n     function TestFailure_1() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n-    function TestFailure_2()\n+    function TestFailure_2() //invalid parameter\n     {\n+        self::assertEquals(False, self::ConnectDB_Login(\"\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684089867766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n     function TestSuccess() // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n-    function TestFailure_1() //invalid parameter\n+    function TestFailure_1() //wrong pair of parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n     function TestFailure_2() //invalid parameter\n"
+                },
+                {
+                    "date": 1684090156538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,7 +66,7 @@\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n     function TestFailure_2() //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(\"\"));\n+        self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n }\n"
+                },
+                {
+                    "date": 1684090169253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,5 +68,8 @@\n     function TestFailure_2() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n+    function TestFailure_3()\n+    {\n+    }\n }\n"
+                },
+                {
+                    "date": 1684090197995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,8 +68,8 @@\n     function TestFailure_2() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n-    function TestFailure_3()\n+    function TestFailure_3() //invalid parameter\n     {\n     }\n }\n"
+                },
+                {
+                    "date": 1684090208614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,6 +70,7 @@\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function TestFailure_3() //invalid parameter\n     {\n+        self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n }\n"
+                },
+                {
+                    "date": 1684090257700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,7 @@\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function TestFailure_3() //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n+        self::assertEquals(False, self::ConnectDB_Login(!%%@@@, \"\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684090270312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,7 @@\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function TestFailure_3() //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(!%%@@@, \"\"));\n+        self::assertEquals(False, self::ConnectDB_Login(10.344, \"\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684090279034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,8 @@\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function TestFailure_3() //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(10.344, \"\"));\n+        self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n+    function \n }\n"
+                },
+                {
+                    "date": 1684090285236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,6 +72,8 @@\n     function TestFailure_3() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n-    function \n+    function TestFailure_4({\n+        \n+    })\n }\n"
+                },
+                {
+                    "date": 1684090339694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,8 @@\n     function TestFailure_3() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n-    function TestFailure_4({\n-        \n-    })\n+    function TestFailure_4()\n+    {\n+    }\n }\n"
+                },
+                {
+                    "date": 1684090348105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,8 @@\n     function TestFailure_3() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n-    function TestFailure_4()\n+    function TestFailure_4() //\n     {\n     }\n }\n"
+                },
+                {
+                    "date": 1684090652995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,5 @@\n     function TestFailure_3() //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n-    function TestFailure_4() //\n-    {\n-    }\n }\n"
+                },
+                {
+                    "date": 1684092615199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n         }\n         // header(\"Location: ../index.php\");\n     }\n \n-    function TestSuccess() // valid parameters\n+    function TestSuccess(): void // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function TestFailure_1() //wrong pair of parameter\n"
+                },
+                {
+                    "date": 1684092622337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,17 +60,17 @@\n     function TestSuccess(): void // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n-    function TestFailure_1() //wrong pair of parameter\n+    function TestFailure_1(): void //wrong pair of parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n-    function TestFailure_2() //invalid parameter\n+    function TestFailure_2(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n-    function TestFailure_3() //invalid parameter\n+    function TestFailure_3(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684092721867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,21 +56,21 @@\n         }\n         // header(\"Location: ../index.php\");\n     }\n \n-    function TestSuccess(): void // valid parameters\n+    function testSuccess(): void // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n-    function TestFailure_1(): void //wrong pair of parameter\n+    function testFailure_1(): void //wrong pair of parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n-    function TestFailure_2(): void //invalid parameter\n+    function testFailure_2(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n-    function TestFailure_3(): void //invalid parameter\n+    function testFailure_3(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684092740571,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n         }\n         // header(\"Location: ../index.php\");\n     }\n \n-    function testSuccess(): void // valid parameters\n+    function testSuccess() // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n"
+                },
+                {
+                    "date": 1684092747882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n         }\n         // header(\"Location: ../index.php\");\n     }\n \n-    function testSuccess() // valid parameters\n+    function testSuccess(): void // valid parameters\n     {\n         self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n"
+                },
+                {
+                    "date": 1684092756042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,9 @@\n     }\n \n     function testSuccess(): void // valid parameters\n     {\n-        self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n+        self::assertTrue(self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n"
+                },
+                {
+                    "date": 1684092843612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n         self::assertTrue(self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n+        self::assertFalse(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n     function testFailure_2(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n"
+                },
+                {
+                    "date": 1684092852917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,13 +62,13 @@\n         self::assertTrue(self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n     {\n-        self::assertFalse(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n+        self::assertFalse(self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n     function testFailure_2(): void //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n+        self::assertFalse(self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function testFailure_3(): void //invalid parameter\n     {\n         self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n"
+                },
+                {
+                    "date": 1684092860437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,7 @@\n         self::assertFalse(self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function testFailure_3(): void //invalid parameter\n     {\n-        self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n+        self::assertFalse(self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684093045489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,7 @@\n         self::assertFalse(self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function testFailure_3(): void //invalid parameter\n     {\n-        self::assertFalse(self::ConnectDB_Login(10.344, \"yuan0000\"));\n+        self::assertFalse(ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684093058339,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,7 +70,7 @@\n         self::assertFalse(self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function testFailure_3(): void //invalid parameter\n     {\n-        self::assertFalse(ConnectDB_Login(10.344, \"yuan0000\"));\n+        self::assertFalse(self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684093525266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,19 +58,19 @@\n     }\n \n     function testSuccess(): void // valid parameters\n     {\n-        self::assertTrue(self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n+        self::assertEquals(True, self::ConnectDB_Login(\"yuanhsuanlin\", \"yuan0000\"));\n     }\n     function testFailure_1(): void //wrong pair of parameter\n     {\n-        self::assertFalse(self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n+        self::assertEquals(False, self::ConnectDB_Login(\"joshuaMaxeen\", \"yuan0000\"));\n     }\n     function testFailure_2(): void //invalid parameter\n     {\n-        self::assertFalse(self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n+        self::assertEquals(False, self::ConnectDB_Login(\"yuanhsuanlin\", 0));\n     }\n     function testFailure_3(): void //invalid parameter\n     {\n-        self::assertFalse(self::ConnectDB_Login(10.344, \"yuan0000\"));\n+        self::assertEquals(False, self::ConnectDB_Login(10.344, \"yuan0000\"));\n     }\n }\n"
+                },
+                {
+                    "date": 1684093566178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,8 +53,9 @@\n         } catch (Exception $e) {\n             $mysqli->close();\n             echo '<script>alert(Caught exception: ', $e->getMessage(), \")\";\n         }\n+        return $validLogin;\n         // header(\"Location: ../index.php\");\n     }\n \n     function testSuccess(): void // valid parameters\n"
+                },
+                {
+                    "date": 1684093680918,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n \n             // Check connection\n             if ($mysqli->connect_errno) {\n                 echo \"Failed to connect to MySQL: \" . $mysqli->connect_error;\n+\n                 exit();\n             };\n \n             $sql = \"\n"
+                },
+                {
+                    "date": 1684093714400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,9 @@\n \n             // Check connection\n             if ($mysqli->connect_errno) {\n                 echo \"Failed to connect to MySQL: \" . $mysqli->connect_error;\n-\n-                exit();\n+                return $validLogin;\n             };\n \n             $sql = \"\n   SELECT `firstName`, `lastName` FROM `Paccount`\n"
+                },
+                {
+                    "date": 1684093727281,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n                 $validLogin = True;\n                 return $validLogin;\n             }\n         } catch (Exception $e) {\n-            $mysqli->close();\n+\n             echo '<script>alert(Caught exception: ', $e->getMessage(), \")\";\n         }\n         return $validLogin;\n         // header(\"Location: ../index.php\");\n"
+                },
+                {
+                    "date": 1684116761469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n         $validLogin = False;\n         try {\n             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);\n             // Create connection\n-            $mysqli = new mysqli(\"localhost\", \"root\", \"\", \"oms\", 3306);\n+            $mysqli = new mysqli(\"127.0.0.1\", \"root\", \"\", \"oms\", 3306);\n \n             // Check connection\n             if ($mysqli->connect_errno) {\n                 echo \"Failed to connect to MySQL: \" . $mysqli->connect_error;\n"
+                },
+                {
+                    "date": 1684119346532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n                 if ($result = $mysqli->store_result()) {\n                     $arr = $result->fetch_all(MYSQLI_ASSOC);\n                     $result->free();\n                 }\n-\n+                $fn = \"\";\n                 foreach ($arr as $key => $val) {\n                     if ($val['firstName'] != null) {\n                         $fn = $val['firstName'];\n                     }\n"
+                }
+            ],
+            "date": 1684089193885,
+            "name": "Commit-0",
+            "content": "class LoginTest"
+        }
+    ]
+}
